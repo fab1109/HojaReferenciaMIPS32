@@ -1,0 +1,84 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+
+\title{Hoja de Referencia MIPS32}
+\author{Fabian Peña}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{multicols}{2}
+
+\section*{Categorías de Instrucciones}
+
+\subsection*{1. Carga y Almacenamiento}
+
+\begin{itemize}
+    \item \textbf{lw} \$t0, offset(\$t1) \hfill Carga palabra desde memoria
+    \item \textbf{sw} \$t0, offset(\$t1) \hfill Almacena palabra en memoria
+    \item \textbf{lb} / \textbf{sb} \hfill Carga/almacena byte (con signo)
+    \item \textbf{lbu} \hfill Carga byte sin signo
+    \item \textbf{la} \$t0, etiqueta \hfill Carga dirección
+\end{itemize}
+
+\subsection*{2. Aritméticas}
+
+\begin{itemize}
+    \item \textbf{add} \$t0, \$t1, \$t2 \hfill Suma con overflow
+    \item \textbf{addu} \$t0, \$t1, \$t2 \hfill Suma sin overflow
+    \item \textbf{sub} \$t0, \$t1, \$t2 \hfill Resta con overflow
+    \item \textbf{subu} \$t0, \$t1, \$t2 \hfill Resta sin overflow
+    \item \textbf{mult} \$t1, \$t2 \hfill Multiplica (resultado en HI/LO)
+    \item \textbf{mflo} \$t0 \hfill Copia parte baja del resultado
+    \item \textbf{mfhi} \$t0 \hfill Copia parte alta del resultado
+    \item \textbf{mul} \$t0, \$t1, \$t2 \hfill Pseudo-instrucción, usa HI/LO
+    \item \textbf{div} \$t0, \$t1 \hfill División
+\end{itemize}
+
+\subsection*{3. Lógicas}
+
+\begin{itemize}
+    \item \textbf{and} \$t0, \$t1, \$t2 \hfill AND bit a bit
+    \item \textbf{or} \$t0, \$t1, \$t2 \hfill OR bit a bit
+    \item \textbf{xor} \$t0, \$t1, \$t2 \hfill XOR bit a bit
+    \item \textbf{nor} \$t0, \$t1, \$t2 \hfill NOR bit a bit
+    \item \textbf{li} \$t0, valor \hfill Cargar inmediato
+    \item \textbf{move} \$t0, \$t1 \hfill Copiar registros
+\end{itemize}
+
+\subsection*{4. Desplazamientos}
+
+\begin{itemize}
+    \item \textbf{sll} \$t0, \$t1, n \hfill Desplazamiento lógico izq.
+    \item \textbf{srl} \$t0, \$t1, n \hfill Desplazamiento lógico der.
+    \item \textbf{sra} \$t0, \$t1, n \hfill Desplazamiento aritmético der.
+\end{itemize}
+
+\subsection*{5. Control de Flujo}
+
+\begin{itemize}
+    \item \textbf{beq} \$t0, \$t1, etiqueta \hfill Salta si son iguales
+    \item \textbf{bne} \$t0, \$t1, etiqueta \hfill Salta si son distintos
+    \item \textbf{j} etiqueta \hfill Salto incondicional
+    \item \textbf{jal} etiqueta \hfill Salta y guarda dirección de retorno
+    \item \textbf{jr} \$ra \hfill Retorna a la dirección guardada
+\end{itemize}
+
+\subsection*{6. Syscalls}
+
+\begin{itemize}
+    \item \textbf{li} \$v0, 1 \hfill Imprimir entero \\
+          \ \ \$a0 = entero
+    \item \textbf{li} \$v0, 4 \hfill Imprimir cadena \\
+          \ \ \$a0 = dirección del texto
+    \item \textbf{li} \$v0, 5 \hfill Leer entero (resultado en \$v0)
+    \item \textbf{li} \$v0, 10 \hfill Terminar programa
+\end{itemize}
+
+\end{multicols}
+\end{document}
